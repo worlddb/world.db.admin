@@ -14,3 +14,12 @@ capybara-*.html
 **.orig
 rerun.txt
 pickle-email-*.html
+
+
+## ignore (local) world.db
+
+/db/world.db
+
+### ignore komodo files
+
+*.kpf

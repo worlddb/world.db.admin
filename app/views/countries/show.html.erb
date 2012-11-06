@@ -1,0 +1,55 @@
+
+<h3>
+<%= image_tag "flags/24x24/#{@country.key}.png" %>
+<%= @country.title %> 
+(<%= @country.tag %>)
+</h3>
+
+<h4><%= @country.regions.count %> Regions</h4>
+
+<table>
+  <% @country.regions.each do |region| %>
+     <tr>
+      <td class='region-key'>
+        <%= region.key %>
+      </td>
+      <td>
+        <%= region.title %>
+      </td>
+      <td>
+      <span class='city-count'>
+          (<%= region.cities.count %>)
+      </span>
+      </td>
+      <td>
+         <% region.cities.each_with_index do |city,index| %>
+           <%= '•' if index > 0 %>
+           <%= city.title %>
+         <% end %><!-- each city -->
+      </td>
+     </tr>
+  <% end %> <!-- each region -->
+</table>
+      
+
+
+
+
+<h4><%= @country.cities.count %> Cities</h4>
+
+<table>
+  <% @country.cities.each do |city| %>
+    <tr>
+      <td class='city-key'>
+        <%= city.key %>
+      </td>
+      <td>
+        <%= city.title %>
+        <%= " | #{city.synonyms.split('|').join(' | ')}" if city.synonyms.present? %>
+      </td>
+      <td>
+        <%= city.pop %>
+      </td>
+    </tr>
+  <% end %> <!-- each city -->
+</table>

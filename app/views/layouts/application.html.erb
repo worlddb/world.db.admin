@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>world.db Web Admin</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+ <p>
+  <%= link_to 'Countries', countries_path() %>  &bull;  
+  <%= link_to 'Regions', regions_path() %>  &bull;  
+  <%= link_to 'About', about_path() %> 
+  <!-- todo: add some more links -->
+ </p>
+
+<div class='content'>
+<%= yield %>
+</div>
+
+<div class='version'>
+<%= powered_by %>
+</div>
+
+</body>
+</html>
