@@ -106,7 +106,7 @@ GEM
     uglifier (1.3.0)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
-    worlddb (0.2.0)
+    worlddb (0.2.1)
       activerecord (~> 3.2)
 
 PLATFORMS
@@ -122,4 +122,4 @@ DEPENDENCIES
   sqlite3
   thin
   uglifier (>= 1.0.3)
-  worlddb (= 0.2.0)
+  worlddb (= 0.2.1)

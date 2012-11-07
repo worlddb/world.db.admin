@@ -9,7 +9,7 @@ gem 'rails', '3.2.1'
 ############
 ## lets use open world.db schema & fixtures
 
-gem 'worlddb', '0.2.0'
+gem 'worlddb', '0.2.1'
 
 
 group :production do
