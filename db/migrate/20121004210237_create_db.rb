@@ -1,6 +1,6 @@
 class CreateDb < ActiveRecord::Migration
   def up
-    WorldDB::CreateDB.up
+    WorldDB.create
   end
 
   def down

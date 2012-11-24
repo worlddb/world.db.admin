@@ -16,25 +16,37 @@ ActiveRecord::Schema.define(:version => 20121004210237) do
   create_table "cities", :force => true do |t|
     t.string   "title",                         :null => false
     t.string   "key",                           :null => false
+    t.string   "code"
     t.string   "synonyms"
     t.integer  "country_id",                    :null => false
     t.integer  "region_id"
     t.integer  "pop"
+    t.integer  "popm"
     t.integer  "area"
-    t.boolean  "capital",    :default => false, :null => false
+    t.float    "lat"
+    t.float    "lng"
+    t.boolean  "m",          :default => false, :null => false
+    t.boolean  "c",          :default => false, :null => false
+    t.boolean  "d",          :default => false, :null => false
+    t.integer  "city_id"
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
   end
 
   create_table "countries", :force => true do |t|
-    t.string   "title",      :null => false
-    t.string   "key",        :null => false
-    t.string   "tag",        :null => false
+    t.string   "title",                         :null => false
+    t.string   "key",                           :null => false
+    t.string   "code",                          :null => false
     t.string   "synonyms"
     t.integer  "pop"
     t.integer  "area"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "country_id"
+    t.boolean  "s",          :default => false, :null => false
+    t.boolean  "c",          :default => false, :null => false
+    t.boolean  "d",          :default => false, :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.string   "motor"
   end
 
   create_table "props", :force => true do |t|
@@ -47,10 +59,29 @@ ActiveRecord::Schema.define(:version => 20121004210237) do
   create_table "regions", :force => true do |t|
     t.string   "title",      :null => false
     t.string   "key",        :null => false
+    t.string   "code"
     t.string   "synonyms"
     t.integer  "country_id", :null => false
     t.integer  "pop"
     t.integer  "area"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "taggings", :force => true do |t|
+    t.integer  "tag_id",        :null => false
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
+  add_index "taggings", ["taggable_id", "taggable_type"], :name => "index_taggings_on_taggable_id_and_taggable_type"
+
+  create_table "tags", :force => true do |t|
+    t.string   "key",        :null => false
+    t.string   "title"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
