@@ -4,7 +4,7 @@ class CountriesController < ApplicationController
 
   # GET /countries
   def index
-    @countries = Country.all
+    @countries = Country.order('title asc').all
   end
 
   # GET /countries/1

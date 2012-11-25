@@ -1,0 +1,14 @@
+
+<h3><%= Tag.count %> Tags / <%= Tagging.count %> Taggings</h3>
+
+<p>
+<% @tags.each_with_index do |tag,index| %>
+  <% if index > 0 %>
+    &nbsp;
+  <% end %>
+  <%= link_to tag.key, tag_path(tag) %>
+  <span class='tagging-count'>
+   (<%= tag.taggings.count %>)
+  </span>
+<% end %><!-- each tag -->
+</p>

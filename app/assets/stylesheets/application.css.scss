@@ -29,7 +29,13 @@ a {
 
 
 
-.city-count {
+.city-count,
+.tag-count,
+.tagging-count,
+.tags,
+.country-key,
+.region-key,
+.city-key {
   color: $dark-gray;
   font-size: 12px;   // ~80%
 }

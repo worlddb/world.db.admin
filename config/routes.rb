@@ -4,6 +4,7 @@ Sportdb::Application.routes.draw do
   
   resources :countries
   resources :regions
+  resources :tags
  
   root :to => 'countries#index'
 

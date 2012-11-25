@@ -1,0 +1,48 @@
+
+<h3><%= @tag.key %></h3>
+
+<h4><%= @tag.countries.count %> Countries</h4>
+
+<p>
+  <% @tag.countries.each_with_index do |country,index| %>
+    <% if index > 0 %>
+      &nbsp;
+    <% end %>
+     <span class='country-key'>
+      <%= country.key %>
+     </span> 
+     <%= image_tag "flags/24x24/#{country.key}.png" %>
+     <%= link_to country.title, country_path(country) %> (<%= country.code %>)
+  <% end %>
+</p>
+
+<h4><%= @tag.regions.count %> Regions</h4>
+
+<p>
+  <% @tag.regions.each_with_index do |region,index| %>
+    <% if index > 0 %>
+      &nbsp;
+    <% end %>
+     <span class='region-key'>
+      <%= "#{region.country.key}.#{region.key}" %>
+     </span>
+     <%= link_to region.title, country_path(region.country) %>
+  <% end %>
+</p>
+
+
+
+<h4><%= @tag.cities.count %> Cities</h4>
+
+<p>
+  <% @tag.cities.each_with_index do |city,index| %>
+    <% if index > 0 %>
+      &nbsp;
+    <% end %>
+     <span class='city-key'>
+      <%= "#{city.region.country.key}.#{city.region.key}.#{city.key}" %>
+     </span>
+     <%= link_to city.title, country_path(city.region.country) %>
+  <% end %>
+</p>
+

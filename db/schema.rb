@@ -49,6 +49,9 @@ ActiveRecord::Schema.define(:version => 20121004210237) do
     t.string   "motor"
   end
 
+  add_index "countries", ["code"], :name => "index_countries_on_code", :unique => true
+  add_index "countries", ["key"], :name => "index_countries_on_key", :unique => true
+
   create_table "props", :force => true do |t|
     t.string   "key",        :null => false
     t.string   "value",      :null => false
@@ -68,6 +71,8 @@ ActiveRecord::Schema.define(:version => 20121004210237) do
     t.datetime "updated_at", :null => false
   end
 
+  add_index "regions", ["key", "country_id"], :name => "index_regions_on_key_and_country_id", :unique => true
+
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id",        :null => false
     t.integer  "taggable_id"
@@ -85,5 +90,7 @@ ActiveRecord::Schema.define(:version => 20121004210237) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "tags", ["key"], :name => "index_tags_on_key", :unique => true
 
 end

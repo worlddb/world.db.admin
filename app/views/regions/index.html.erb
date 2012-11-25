@@ -6,42 +6,49 @@
  
 <% if country.regions.count > 0 %>
   <tr>
-    <td class='country-key'  style='vertical-align: top;'>
+    <td class='country-key'  style='vertical-align: baseline;'>
       <%= country.key %>
     </td>
-    <td style='white-space: nowrap; vertical-align: top;'>
+    <td style='white-space: nowrap; vertical-align: baseline;'>
 <%= image_tag "flags/24x24/#{country.key}.png" %>  
 <%= link_to country.title, country_path( country ) %>
-    </td>
-    <td  style='vertical-align: top;'>
       (<%= country.code %>)
-    </td>
-    <td  style='vertical-align: top;'>
-<span class='city-count'>
-(<%= country.regions.count %>)
-</span>
+ <span class='city-count'>
+  (<%= country.regions.count %>)
+ </span>
     </td>
     <td>
 
       <table>
   <% country.regions.each do |region| %>
      <tr>
-      <td>
+      <td class='region-key' style='vertical-align: baseline;'>
+        <%= region.key %>
+      </td>
+      <td style='vertical-align: baseline;'>
         <%= region.title %>
-      </td>
-      <td style='white-space: nowrap;'>
-      <span class='city-count'>
-          (<%= region.cities.count %>)
+        <%= " | #{region.synonyms.split('|').join(' | ')}" if region.synonyms.present? %>
+        <br>
+        <span class='tags'>
+  <% region.tags.each_with_index do |tag,index| %>
+     <%= '•' if index > 0 %>
+     <%= link_to tag.key, tag_path(tag) %>
+  <% end %><!-- each tag -->
       </span>
-        | 
       </td>
-      <td>
+      <td style='vertical-align: baseline; text-align: right;'>
+        <span class='city-count'>
+           (<%= region.cities.count %>)
+        </span>
+      </td>
+      <td style='vertical-align: baseline;'>
          <% region.cities.each_with_index do |city,index| %>
            <%= '•' if index > 0 %>
            <%= city.title %>
          <% end %><!-- each city -->
       </td>
      </tr>
+
   <% end %> <!-- each region -->
       </table>
       

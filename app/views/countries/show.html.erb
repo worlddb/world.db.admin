@@ -3,7 +3,31 @@
 <%= image_tag "flags/24x24/#{@country.key}.png" %>
 <%= @country.title %> 
 (<%= @country.code %>)
+
+
+<% if @country.country_id.present?
+     c2 = Country.find( @country.country_id )
+  %>
+
+/ Part of
+<%= image_tag "flags/24x24/#{c2.key}.png" %>
+<%= c2.title %> 
+(<%= c2.code %>)
+  
+<% end %>
+
 </h3>
+
+
+<h4><%= @country.tags.count %> Tags</h4>
+
+<p class='tags'>
+  <% @country.tags.each_with_index do |tag,index| %>
+     <%= '•' if index > 0 %>
+     <%= link_to tag.key, tag_path(tag) %>
+  <% end %><!-- each tag -->
+</p>
+
 
 <h4><%= @country.regions.count %> Regions</h4>
 
