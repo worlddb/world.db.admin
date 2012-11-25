@@ -5,15 +5,11 @@
 (<%= @country.code %>)
 
 
-<% if @country.country_id.present?
-     c2 = Country.find( @country.country_id )
-  %>
-
-/ Part of
-<%= image_tag "flags/24x24/#{c2.key}.png" %>
-<%= c2.title %> 
-(<%= c2.code %>)
-  
+<% if @country.parent.present? %>
+  / Part of
+  <%= image_tag "flags/24x24/#{@country.parent.key}.png" %>
+  <%= @country.parent.title %> 
+  (<%= @country.parent.code %>)
 <% end %>
 
 </h3>
@@ -34,18 +30,24 @@
 <table>
   <% @country.regions.each do |region| %>
      <tr>
-      <td class='region-key'>
+      <td class='region-key' style='vertical-align: baseline;'>
         <%= region.key %>
       </td>
-      <td>
-        <%= region.title %>
+      <td style='vertical-align: baseline;'>
+        <%= region.title_w_synonyms %> <br>
+        <span class='tags'>
+  <% region.tags.each_with_index do |tag,index| %>
+     <%= '•' if index > 0 %>
+     <%= link_to tag.key, tag_path(tag) %>
+  <% end %><!-- each tag -->
+      </span>
       </td>
-      <td>
+      <td style='vertical-align: baseline;'>
       <span class='city-count'>
           (<%= region.cities.count %>)
       </span>
       </td>
-      <td>
+      <td style='vertical-align: baseline;'>
          <% region.cities.each_with_index do |city,index| %>
            <%= '•' if index > 0 %>
            <%= city.title %>
@@ -68,8 +70,7 @@
         <%= city.key %>
       </td>
       <td>
-        <%= city.title %>
-        <%= " | #{city.synonyms.split('|').join(' | ')}" if city.synonyms.present? %>
+        <%= city.title_w_synonyms %>
       </td>
       <td>
         <%= city.pop %>

@@ -26,8 +26,7 @@
         <%= region.key %>
       </td>
       <td style='vertical-align: baseline;'>
-        <%= region.title %>
-        <%= " | #{region.synonyms.split('|').join(' | ')}" if region.synonyms.present? %>
+        <%= region.title_w_synonyms %>
         <br>
         <span class='tags'>
   <% region.tags.each_with_index do |tag,index| %>
