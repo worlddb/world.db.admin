@@ -4,7 +4,15 @@ class CountriesController < ApplicationController
 
   # GET /countries
   def index
-    @countries = Country.order('title asc').all
+    
+    order = params[:order]
+    if order == 'pop'
+      @countries = Country.by_pop.all
+    elsif order == 'area'
+      @countries = Country.by_area.all
+    else
+      @countries = Country.by_title.all
+    end
   end
 
   # GET /countries/1

@@ -38,8 +38,8 @@ ActiveRecord::Schema.define(:version => 20121004210237) do
     t.string   "key",                           :null => false
     t.string   "code",                          :null => false
     t.string   "synonyms"
-    t.integer  "pop"
-    t.integer  "area"
+    t.integer  "pop",                           :null => false
+    t.integer  "area",                          :null => false
     t.integer  "country_id"
     t.boolean  "s",          :default => false, :null => false
     t.boolean  "c",          :default => false, :null => false
