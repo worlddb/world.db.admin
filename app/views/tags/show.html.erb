@@ -6,6 +6,8 @@
 
 <p>
   Download: <%= link_to 'CSV', csv_countries_by_tag_path( @tag ), :title => 'Comma-separated values; tabular data in plain text' %>     
+    &bull;
+   <%= link_to 'Table', table_countries_by_tag_path( @tag ), :title => 'Hypertext table' %>   
 </p>
 
 <p>

@@ -15,11 +15,11 @@ Sportdb::Application.routes.draw do
   
     
   #############################    
-  # routes for data export (comma separated values/csv or html table)  
+  # routes for data export (comma separated values/csv or html table or json)  
 
-  match '/countries/csv',      :to => 'export#csv_countries',        :as => :csv_countries
-  match '/tag/:key/csv',       :to => 'export#csv_countries_by_tag', :as => :csv_countries_by_tag_worker, :key => /[a-z][a-z0-9_]+/
-  match '/cities/csv',         :to => 'export#csv_cities',           :as => :csv_cities
+  match '/dl/countries',  :to => 'export#countries',        :as => :dl_countries
+  match '/dl/tag/:key',   :to => 'export#countries_by_tag', :as => :dl_countries_by_tag_worker, :key => /[a-z][a-z0-9_]+/
+  match '/dl/cities',     :to => 'export#cities',           :as => :dl_cities
 
      
   resources :countries

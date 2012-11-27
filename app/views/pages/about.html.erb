@@ -36,7 +36,7 @@ A free open world database &amp; schema.
   <span class='country-key'>
    <%= country.key %>
   </span>
-  <%= link_to country.title_w_synonyms, short_country_path( country.key ),
+  <%= link_to country.title_w_synonyms, short_country_path( country ),
         :title => "#{number_to_human(country.pop)} / #{number_to_human(country.area)} km²",
         :class => country_style( country ) %>
 <% end %>
@@ -56,9 +56,8 @@ A free open world database &amp; schema.
   <span class='city-key'>
    <%= city.key %>
   </span>
-  <%= link_to city.title_w_synonyms, short_city_path( city.key ),
+  <%= link_to city.title_w_synonyms, short_city_path( city ),
         :title => "#{number_to_human(city.pop)} / M: #{number_to_human(city.popm)}",
         :class => city_style( city ) %>
 <% end %>
 </p>
-
