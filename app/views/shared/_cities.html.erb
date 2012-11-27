@@ -1,0 +1,11 @@
+
+<!-- requires para cities -->
+
+<span class='cities'>
+<% cities.each_with_index do |city,index| %>
+  <% if index > 0 %>
+    &bull;
+  <% end %>
+  <%= city.title %>
+<% end %> <!-- each city -->
+</span>

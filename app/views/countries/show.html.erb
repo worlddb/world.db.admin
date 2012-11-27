@@ -1,6 +1,6 @@
 
 <h3>
-<%= image_tag "flags/24x24/#{@country.key}.png" %>
+<%= image_tag "flags/64x64/#{@country.key}.png" %>
 <%= @country.title %> 
 (<%= @country.code %>)
 
@@ -8,21 +8,38 @@
 <% if @country.parent.present? %>
   / Part of
   <%= image_tag "flags/24x24/#{@country.parent.key}.png" %>
-  <%= @country.parent.title %> 
-  (<%= @country.parent.code %>)
+  <%= link_to "#{@country.parent.title} (#{@country.parent.code})", short_country_path( @country.parent.key ) %>
 <% end %>
 
 </h3>
 
-
-<h4><%= @country.tags.count %> Tags</h4>
-
-<p class='tags'>
-  <% @country.tags.each_with_index do |tag,index| %>
-     <%= '•' if index > 0 %>
-     <%= link_to tag.key, tag_path(tag) %>
-  <% end %><!-- each tag -->
+<p>
+  <%= render_tags( @country.tags ) %>
 </p>
+
+<% if @country.countries.count > 0 %>
+<h4><%= @country.countries.count %> Countries</h4>
+
+<table>
+  <% @country.countries.each do |country| %>
+     <tr>
+      <td class='country-key' style='vertical-align: baseline;'>
+        <%= country.key %>
+      </td>
+      <td style='vertical-align: baseline;'>
+      <%= image_tag "flags/24x24/#{country.key}.png" %>
+      </td>
+      <td style='vertical-align: baseline;'>
+        <%= link_to country.title_w_synonyms, short_country_path( country.key ) %>
+        <br>
+        <%= render_tags( country.tags ) %>
+      </td>
+     </tr>
+  <% end %> <!-- each region -->
+</table>
+      
+<% end %>
+
 
 
 <h4><%= @country.regions.count %> Regions</h4>
@@ -31,16 +48,13 @@
   <% @country.regions.each do |region| %>
      <tr>
       <td class='region-key' style='vertical-align: baseline;'>
+        <a name='<%= region.key %>'></a><!-- todo: use anchor helper, exists? check it -->
         <%= region.key %>
       </td>
       <td style='vertical-align: baseline;'>
-        <%= region.title_w_synonyms %> <br>
-        <span class='tags'>
-  <% region.tags.each_with_index do |tag,index| %>
-     <%= '•' if index > 0 %>
-     <%= link_to tag.key, tag_path(tag) %>
-  <% end %><!-- each tag -->
-      </span>
+        <%= region.title_w_synonyms %>
+        <br>
+        <%= render_tags( region.tags ) %>
       </td>
       <td style='vertical-align: baseline;'>
       <span class='city-count'>
@@ -48,10 +62,7 @@
       </span>
       </td>
       <td style='vertical-align: baseline;'>
-         <% region.cities.each_with_index do |city,index| %>
-           <%= '•' if index > 0 %>
-           <%= city.title %>
-         <% end %><!-- each city -->
+        <%= render_cities( region.cities) %>
       </td>
      </tr>
   <% end %> <!-- each region -->
@@ -73,7 +84,15 @@
         <%= city.title_w_synonyms %>
       </td>
       <td>
-        <%= city.pop %>
+        <%= number_to_human( city.pop ) %>
+      </td>
+    <td>
+     <% if city.popm.present? %>
+       M: <%= number_to_human( city.popm ) %>
+     <% end %>
+    </td>
+      <td>
+        <%= city.region.title if city.region.present? %>
       </td>
     </tr>
   <% end %> <!-- each city -->

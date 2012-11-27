@@ -27,6 +27,18 @@ a {
   &:visited { color: black; }
 }
 
+.city_10_000_000  { font-size: 24px; font-weight: bold;  }
+.city_1_000_000  { font-size: 20px; font-weight: bold;  }
+.city_500_000  { font-size: 16px; font-weight: bold; }
+.city_100_000  { font-size: 14px;  }
+.city_10_000   { font-size: 12px;  }
+.city_nil  {  font-size: 14px; color: navy; }
+
+.country_100_000_000  { font-size: 20px; font-weight: bold; }
+.country_10_000_000  { font-size: 16px; font-weight: bold; }
+.country_1_000_000  { font-size: 14px;  }
+.country_100_000   { font-size: 12px;  }
+.country_nil   {  font-size: 14px; color: navy; }
 
 
 .city-count,

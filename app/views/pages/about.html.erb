@@ -21,3 +21,44 @@ A free open world database &amp; schema.
               Region.count+
               City.count + Tag.count + Tagging.count %></td><td>Total</td></tr>
 </table>
+
+
+<h3><%= Country.count %> Countries </h3>
+
+<!-- all countries tag cloud style -->
+<p>
+<% Country.by_key.each_with_index do |country,index| %>
+  
+  <% if index > 0 %>
+    &bull;
+  <% end %>
+  
+  <span class='country-key'>
+   <%= country.key %>
+  </span>
+  <%= link_to country.title_w_synonyms, short_country_path( country.key ),
+        :title => "#{number_to_human(country.pop)} / #{number_to_human(country.area)} km²",
+        :class => country_style( country ) %>
+<% end %>
+</p>
+
+
+<h3><%= City.count %> Cities </h3>
+
+<!-- all cities tag cloud style -->
+<p>
+<% City.by_key.each_with_index do |city,index| %>
+
+  <% if index > 0 %>
+    &bull;
+  <% end %>
+
+  <span class='city-key'>
+   <%= city.key %>
+  </span>
+  <%= link_to city.title_w_synonyms, short_city_path( city.key ),
+        :title => "#{number_to_human(city.pop)} / M: #{number_to_human(city.popm)}",
+        :class => city_style( city ) %>
+<% end %>
+</p>
+

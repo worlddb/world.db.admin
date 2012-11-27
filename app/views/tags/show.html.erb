@@ -1,6 +1,7 @@
 
 <h3><%= @tag.key %></h3>
 
+<% if @tag.countries.count > 0 %>
 <h4><%= @tag.countries.count %> Countries</h4>
 
 <p>
@@ -12,10 +13,12 @@
       <%= country.key %>
      </span> 
      <%= image_tag "flags/24x24/#{country.key}.png" %>
-     <%= link_to country.title, country_path(country) %> (<%= country.code %>)
+     <%= link_to country.title, short_country_path(country.key) %> (<%= country.code %>)
   <% end %>
 </p>
+<% end %>
 
+<% if @tag.regions.count > 0 %>
 <h4><%= @tag.regions.count %> Regions</h4>
 
 <p>
@@ -26,23 +29,7 @@
      <span class='region-key'>
       <%= "#{region.country.key}.#{region.key}" %>
      </span>
-     <%= link_to region.title, country_path(region.country) %>
+     <%= link_to region.title, short_region_path(region.country.key, region.key) %>
   <% end %>
 </p>
-
-
-
-<h4><%= @tag.cities.count %> Cities</h4>
-
-<p>
-  <% @tag.cities.each_with_index do |city,index| %>
-    <% if index > 0 %>
-      &nbsp;
-    <% end %>
-     <span class='city-key'>
-      <%= "#{city.region.country.key}.#{city.region.key}.#{city.key}" %>
-     </span>
-     <%= link_to city.title, country_path(city.region.country) %>
-  <% end %>
-</p>
-
+<% end %>

@@ -1,0 +1,37 @@
+
+<h3><%= City.count %> Cities</h3>
+
+<p>
+  Sort By: <%= link_to 'Key A-Z', cities_path( :order => 'key' )  %>
+          &bull;  
+        <%= link_to 'Title A-Z', cities_path( :order => 'title' )  %>
+          &bull;
+        <%= link_to 'Population', cities_path( :order => 'pop' ) %>
+          &bull;
+        <%= link_to 'Metro Population', cities_path( :order => 'popm' ) %>
+</p>
+
+
+<table>
+
+<% @cities.each do |city| %>
+<tr>
+  <td class='city-key'><a name='<%= city.key %>'></a><%= city.key %></td>
+  <td><%= city.title_w_synonyms %></td>
+  <td><%= number_to_human( city.pop ) %></td>
+  <td>
+    <% if city.popm.present? %>
+      M: <%= number_to_human( city.popm ) %>
+    <% end %>
+  </td>
+  <td>
+      <%= image_tag "flags/24x24/#{city.country.key}.png" %>
+      <%= link_to city.country.title, short_country_path( city.country.key ) %>
+      <% if city.region.present? %>
+        &gt; <%= city.region.title %>
+      <% end %>
+  </td>
+</tr>
+<% end %>
+
+</table>

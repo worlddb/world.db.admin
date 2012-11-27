@@ -7,7 +7,13 @@ module PartHelper
   #
   # by convention all start w/ render_
 
+  def render_tags( tags )
+    render :partial => 'shared/tags', :locals => { :tags => tags }
+  end
 
-  # nothing here for now
+  def render_cities( cities )
+    render :partial => 'shared/cities', :locals => { :cities => cities }
+  end
+
 
 end # module PartHelper

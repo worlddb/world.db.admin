@@ -86,6 +86,7 @@ ActiveRecord::Schema.define(:version => 20121004210237) do
 
   create_table "tags", :force => true do |t|
     t.string   "key",        :null => false
+    t.string   "slug",       :null => false
     t.string   "title"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false

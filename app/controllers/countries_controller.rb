@@ -14,8 +14,14 @@ class CountriesController < ApplicationController
       @countries = Country.by_title.all
     end
   end
+  
+  # GET /:key  e.g  /at or /us etc.
+  def shortcut
+    @country = Country.find_by_key!( params[:key] )
+    render :show
+  end
 
-  # GET /countries/1
+  # GET /countries/:id  e.g. /countries/1
   def show
     @country = Country.find( params[:id] )
   end

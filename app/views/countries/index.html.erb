@@ -5,7 +5,7 @@
 
 
 <p>
-  View: <%= link_to 'A-Z', countries_path( :order => 'title' )  %>
+  Sort By: <%= link_to 'A-Z', countries_path( :order => 'title' )  %>
           &bull;
         <%= link_to 'Population', countries_path( :order => 'pop' ) %>
           &bull;
@@ -24,22 +24,16 @@
     </td>
     <td style='vertical-align: baseline;'>
       <span style='white-space: nowrap;'>
-<%= link_to country.title, country_path( country ) %>
-      (<%= country.code %>)
+<%= link_to "#{country.title} (#{country.code})", short_country_path( country.key ) %>
       </span>
       <br>
-    <span class='tags'>
-      <% country.tags.each_with_index do |tag,index| %>
-           <%= '•' if index > 0 %>
-          <%= link_to tag.key, tag_path(tag) %>
-      <% end %><!-- each tag -->
-    </span>
+      <%= render_tags( country.tags ) %>
     </td>
     <td style='white-space: nowrap; vertical-align: baseline;'>
       <%= number_to_human( country.pop ) %>
     </td>
     <td style='white-space: nowrap; vertical-align: baseline;'>
-      <%= number_to_human( country.area ) %>
+      <%= number_to_human( country.area ) %> km²
     </td>
     
     <td  style='vertical-align: baseline; text-align: right;'>
@@ -48,10 +42,7 @@
 </span>
     </td>
     <td style='vertical-align: baseline;'>
-  <% country.cities.each_with_index do |city,index| %>
-    <%= '•' if index > 0 %>
-    <%= city.title %>
-  <% end %> <!-- each city -->
+      <%= render_cities( country.cities ) %>
     </td>
   </tr>
       
