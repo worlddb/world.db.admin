@@ -9,7 +9,10 @@ Sportdb::Application.routes.draw do
   match '/:country_key/:key', :to => 'regions#shortcut', :as => :short_region, :country_key => /[a-z]{2}/, :key => /[a-z]{2}/
   
   match '/tag/:key', :to => 'tags#shortcut', :as => :short_tag, :key => /[a-z][a-z0-9_]+/
-  
+    
+  match '/countries/csv',      :to => 'countries#export_csv',     :as => :csv_countries
+  match '/tag/:key/csv',       :to => 'countries#export_csv_tag', :as => :csv_countries_tag, :key => /[a-z][a-z0-9_]+/
+     
   resources :countries
   resources :regions
   resources :tags

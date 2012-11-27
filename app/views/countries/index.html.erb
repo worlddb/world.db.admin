@@ -10,6 +10,11 @@
         <%= link_to 'Population', countries_path( :order => 'pop' ) %>
           &bull;
         <%= link_to 'Area (in km²)', countries_path( :order => 'area' ) %>
+        
+        
+        &nbsp; &nbsp; | &nbsp; &nbsp;
+        
+   Download: <%= link_to 'CSV', csv_countries_path(), :title => 'Comma-separated values; tabular data in plain text' %>     
 </p>
 
 
