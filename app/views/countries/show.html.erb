@@ -1,14 +1,16 @@
 
 <h3>
-<%= image_tag "flags/64x64/#{@country.key}.png" %>
+<%= image_tag_for_country( @country, size: '64x64' ) %>
+
+<!-- fix: use full_title e.g. is title (code) -->
 <%= @country.title %> 
 (<%= @country.code %>)
 
 
 <% if @country.parent.present? %>
   / Part of
-  <%= image_tag "flags/24x24/#{@country.parent.key}.png" %>
-  <%= link_to "#{@country.parent.title} (#{@country.parent.code})", short_country_path( @country.parent.key ) %>
+  <%= image_tag_for_country( @country.parent ) %>
+  <%= link_to "#{@country.parent.title} (#{@country.parent.code})", short_country_path( @country.parent ) %>
 <% end %>
 
 </h3>
@@ -27,10 +29,10 @@
         <%= country.key %>
       </td>
       <td style='vertical-align: baseline;'>
-      <%= image_tag "flags/24x24/#{country.key}.png" %>
+      <%= image_tag_for_country( country ) %>
       </td>
       <td style='vertical-align: baseline;'>
-        <%= link_to country.title_w_synonyms, short_country_path( country.key ) %>
+        <%= link_to country.title_w_synonyms, short_country_path( country ) %>
         <br>
         <%= render_tags( country.tags ) %>
       </td>

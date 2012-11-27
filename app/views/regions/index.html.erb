@@ -10,9 +10,9 @@
       <%= country.key %>
     </td>
     <td style='white-space: nowrap; vertical-align: baseline;'>
-<%= image_tag "flags/24x24/#{country.key}.png" %>  
-<%= link_to country.title, short_country_path( country.key ) %>
-      (<%= country.code %>)
+<%= image_tag_for_country( country ) %>  
+<%= link_to "#{country.title} (#{country.code})", short_country_path( country ) %>
+      
  <span class='city-count'>
   (<%= country.regions.count %>)
  </span>

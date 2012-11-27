@@ -9,6 +9,11 @@
         <%= link_to 'Population', cities_path( :order => 'pop' ) %>
           &bull;
         <%= link_to 'Metro Population', cities_path( :order => 'popm' ) %>
+
+        &nbsp; &nbsp; | &nbsp; &nbsp;
+        
+   Download: <%= link_to 'CSV', csv_cities_path(), :title => 'Comma-separated values; tabular data in plain text' %>
+
 </p>
 
 
@@ -25,8 +30,8 @@
     <% end %>
   </td>
   <td>
-      <%= image_tag "flags/24x24/#{city.country.key}.png" %>
-      <%= link_to city.country.title, short_country_path( city.country.key ) %>
+      <%= image_tag_for_country( city.country ) %>
+      <%= link_to city.country.title, short_country_path( city.country ) %>
       <% if city.region.present? %>
         &gt; <%= city.region.title %>
       <% end %>

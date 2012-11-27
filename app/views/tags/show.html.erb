@@ -5,7 +5,7 @@
 <h4><%= @tag.countries.count %> Countries</h4>
 
 <p>
-  Download: <%= link_to 'CSV', csv_countries_tag_path( @tag.slug ), :title => 'Comma-separated values; tabular data in plain text' %>     
+  Download: <%= link_to 'CSV', csv_countries_by_tag_path( @tag ), :title => 'Comma-separated values; tabular data in plain text' %>     
 </p>
 
 <p>
@@ -16,8 +16,8 @@
      <span class='country-key'>
       <%= country.key %>
      </span> 
-     <%= image_tag "flags/24x24/#{country.key}.png" %>
-     <%= link_to country.title, short_country_path(country.key) %> (<%= country.code %>)
+     <%= image_tag_for_country( country ) %>
+     <%= link_to "#{country.title} (#{country.code})", short_country_path( country ) %>
   <% end %>
 </p>
 <% end %>
@@ -33,7 +33,7 @@
      <span class='region-key'>
       <%= "#{region.country.key}.#{region.key}" %>
      </span>
-     <%= link_to region.title, short_region_path(region.country.key, region.key) %>
+     <%= link_to region.title, short_region_path( region ) %>
   <% end %>
 </p>
 <% end %>

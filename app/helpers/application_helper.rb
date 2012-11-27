@@ -1,5 +1,5 @@
 module ApplicationHelper
-
+  
   def powered_by
     ## todo/fix: use version from wettpool module
     content_tag :div do
@@ -12,6 +12,16 @@ module ApplicationHelper
       ## content_tag( :span, "#{request.headers['SERVER_SOFTWARE'] || request.headers['SERVER']}" )
     end
   end
+  
+  def image_tag_for_country( country, opts={} )
+    if opts[:size] == 'large' || opts[:size] == '64x64'
+      image_tag "flags/64x64/#{country.key}.png"
+    else
+      image_tag "flags/24x24/#{country.key}.png"
+    end
+  end
+  
+  
   
   def city_style( city )
  # city_1_000_000 and up

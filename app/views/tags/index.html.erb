@@ -6,7 +6,7 @@
   <% if index > 0 %>
     &nbsp;
   <% end %>
-  <%= link_to tag.key, short_tag_path(tag.slug) %>
+  <%= link_to tag.key, short_tag_path(tag) %>
   <span class='tagging-count'>
    (<%= tag.taggings.count %>)
   </span>
