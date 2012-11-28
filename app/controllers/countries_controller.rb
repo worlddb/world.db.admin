@@ -1,18 +1,71 @@
 # encoding: utf-8
 
+
+COUNTRY_FILTER_TAGS = [
+  'all',
+  'un',
+  'europe',
+  'asia',
+  'africa',
+  'america',
+  'north america',
+  'south amercia',
+  'central america',
+  'caribbean',
+  'oceania',
+  'south asia',
+  'southeast asia', 
+  'central asia',
+  'east asia',
+  'middle east',
+  'western asia',
+  'northern africa',
+  'western africa',
+  'central africa',
+  'southern africa',
+  'western europe',
+  'central europe',
+#  'eastern europe',  -- no country tagged yet
+  'eu',
+  'schengen',
+  'euro',
+  'g8',
+  'g5',
+  'g20'
+]
+
 class CountriesController < ApplicationController
 
   # GET /countries
   def index
+
+    ## for now store order and tag in session    
+    ## todo/fix: find a  better way to store user order and filter settings
     
-    order = params[:order]
+    session[:order] = order = params[:order] || session[:order] || 'title'
+    session[:tag]   = tag   = params[:tag]   || session[:tag]   || 'all'    
+    
+    @countries = nil    
+
     if order == 'pop'
-      @countries = Country.by_pop.all
+      @countries = Country.by_pop
     elsif order == 'area'
-      @countries = Country.by_area.all
+      @countries = Country.by_area
+    elsif order == 'title'    
+      @countries = Country.by_title
     else
-      @countries = Country.by_title.all
+      @countries = Country.by_title
     end
+        
+    if tag == 'all'
+      ## do nothing; include all
+    else 
+      ## fix/todo:  add with_tag() scope to Country!!!    
+      country_ids = Tag.find_by_key!( tag ).country_ids
+    
+      @countries = @countries.find( country_ids )      
+    end
+
   end
   
   # GET /:key  e.g  /at or /us etc.

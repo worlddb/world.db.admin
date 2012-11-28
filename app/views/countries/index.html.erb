@@ -20,6 +20,17 @@
 </p>
 
 
+<p>
+  Filter By:
+   <% COUNTRY_FILTER_TAGS.each_with_index do |tag,index| %>
+      <% if index > 0 %>
+         &bull;
+      <% end %>
+      <%= link_to tag, countries_path( :tag => tag ) %>
+   <% end %>
+</p>
+
+
 <table>
 <% @countries.each do |country| %>
   <tr>
