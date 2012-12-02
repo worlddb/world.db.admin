@@ -26,6 +26,7 @@ Sportdb::Application.routes.draw do
   resources :regions
   resources :tags
   resources :cities
+  resources :codes
 
 
   ###############################

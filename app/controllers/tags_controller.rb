@@ -11,6 +11,13 @@ class TagsController < ApplicationController
   # GET /tag/:key e.g. /tag/euro or /tag/north_america
   def shortcut
     @tag = Tag.find_by_slug!( params[:key] )
+
+    ## magic parameter for dev -> generate yaml text template
+    if params[:yml].present? || params[:yaml].present?
+      render 'template.txt.erb', :layout => false, :content_type => 'text/plain'
+      return
+    end
+
     render :show
   end
 
@@ -18,5 +25,5 @@ class TagsController < ApplicationController
   def show
     @tag = Tag.find( params[:id] )
   end
-  
+
 end # class TagsController

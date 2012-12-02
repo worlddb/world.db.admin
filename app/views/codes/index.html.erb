@@ -1,0 +1,83 @@
+
+
+<h3><%= Country.count %> Countries </h3>
+
+
+<table>
+  <tr>
+     <td></td>
+     <td>TLD</td>
+     <td></td>
+     <td>FIFA</td>
+     <td></td>
+     <td>ISO3</td>
+     <td>UN?</td>
+     <td>FIFA?</td>
+  </tr>
+  
+  <% @countries.each do |country| %>
+    <tr>
+     <td class='country-key'><%= country.key %></td>
+     <td>
+        <% if country.net.present? %>
+          <% if country.net != country.key %>
+            <span style='color: navy'>&ne; .<%= country.net %></span>
+          <% else %>
+            .<%= country.net %>
+          <% end %>
+        <% else %>
+            <span style='color: navy'>x</span>
+        <% end %>
+     </td>
+     <td><%= country.title %>
+     </td>
+     <td>
+        <% if country.fifa.present? %>
+          <% if country.fifa != country.code %>
+            <span style='color: navy'><%= country.fifa %> &ne;</span>
+          <% else %>
+            <%= country.fifa %>
+          <% end %>
+        <% else %>
+            <span style='color: navy'>x</span>
+        <% end %>
+    </td>
+     <td><%= country.code %></td>
+     <td>
+        <% if country.iso3.present? %>
+          <% if country.iso3 != country.code %>
+            <span style='color: navy'>&ne; <%= country.iso3 %></span>
+          <% else %>
+            <%= country.iso3 %>
+          <% end %>
+        <% else %>
+            <span style='color: navy'>x</span>
+        <% end %>
+     </td>
+     <td>
+        <!-- check if un tag present
+           fix: find a better way!! -->
+        <% tags = country.tags.select { |tag| tag.key == 'un' } %>
+        <% if tags.size > 0 %>
+           Yes
+        <% else %>
+            <span style='color: navy'>x</span>
+        <% end %>
+     </td>
+     <td>
+        <!-- check if un tag present
+           fix: find a better way!! -->
+        <% tags = country.tags.select { |tag| tag.key == 'fifa' } %>
+        <% if tags.size > 0 %>
+           Yes
+        <% else %>
+            <span style='color: navy'>x</span>
+        <% end %>
+     </td>
+     <td class='country-key'><!-- use country-flags -->
+        <%= 'supra'      if country.is_supra?      %>
+        <%= 'dependency' if country.is_dependency? %>
+     </td>
+    </tr>
+  <% end %><!-- each country -->
+</table>
