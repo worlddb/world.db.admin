@@ -21,12 +21,12 @@
      <td>
         <% if country.net.present? %>
           <% if country.net != country.key %>
-            <span style='color: navy'>&ne; .<%= country.net %></span>
+            <span class='code-ne'>&ne; .<%= country.net %></span>
           <% else %>
             .<%= country.net %>
           <% end %>
         <% else %>
-            <span style='color: navy'>x</span>
+            <span class='code-x'>x</span>
         <% end %>
      </td>
      <td><%= country.title %>
@@ -34,24 +34,24 @@
      <td>
         <% if country.fifa.present? %>
           <% if country.fifa != country.code %>
-            <span style='color: navy'><%= country.fifa %> &ne;</span>
+            <span class='code-ne'><%= country.fifa %> &ne;</span>
           <% else %>
             <%= country.fifa %>
           <% end %>
         <% else %>
-            <span style='color: navy'>x</span>
+            <span class='code-x'>x</span>
         <% end %>
     </td>
      <td><%= country.code %></td>
      <td>
         <% if country.iso3.present? %>
           <% if country.iso3 != country.code %>
-            <span style='color: navy'>&ne; <%= country.iso3 %></span>
+            <span class='code-ne'>&ne; <%= country.iso3 %></span>
           <% else %>
             <%= country.iso3 %>
           <% end %>
         <% else %>
-            <span style='color: navy'>x</span>
+            <span class='code-x'>x</span>
         <% end %>
      </td>
      <td>
@@ -61,7 +61,7 @@
         <% if tags.size > 0 %>
            Yes
         <% else %>
-            <span style='color: navy'>x</span>
+            <span class='code-x'>x</span>
         <% end %>
      </td>
      <td>
@@ -71,7 +71,7 @@
         <% if tags.size > 0 %>
            Yes
         <% else %>
-            <span style='color: navy'>x</span>
+            <span class='code-x'>x</span>
         <% end %>
      </td>
      <td class='country-key'><!-- use country-flags -->

@@ -41,6 +41,17 @@ a {
 .country_nil   {  font-size: 14px; color: navy; }
 
 
+/***********
+   ne => not equal
+   x  => missing
+ *****/
+.code-ne,
+.code-x {
+   color: navy;
+   border: 2px solid navy;
+   font-weight: bold;
+}
+
 .city-count,
 .tag-count,
 .tagging-count,

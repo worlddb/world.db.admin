@@ -9,7 +9,7 @@ COUNTRY_FILTER_TAGS = [
   'africa',
   'america',
   'north america',
-  'south amercia',
+  'south america',
   'central america',
   'caribbean',
   'oceania',
