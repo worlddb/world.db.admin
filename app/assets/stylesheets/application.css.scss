@@ -58,7 +58,9 @@ a {
 .tags,
 .country-key,
 .region-key,
-.city-key {
+.city-key,
+.lang-key,
+.lang-count {
   color: $dark-gray;
   font-size: 12px;   // ~80%
 }

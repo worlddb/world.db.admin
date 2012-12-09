@@ -14,12 +14,13 @@
      <td>Motor</td>
      <td>UN?</td>
      <td>FIFA?</td>
+     <td>Languages</td>
   </tr>
   
   <% @countries.each do |country| %>
     <tr>
      <td class='country-key'><%= country.key %></td>
-     <td>
+     <td style='white-space: nowrap;'>
         <% if country.net.present? %>
           <% if country.net != country.key %>
             <span class='code-ne'>&ne; .<%= country.net %></span>
@@ -30,9 +31,14 @@
             <span class='code-x'>x</span>
         <% end %>
      </td>
-     <td><%= country.title %>
-     </td>
      <td>
+        <%= country.title %>
+       <span class='country-key'>
+        <%= '*supra'      if country.is_supra?      %>
+        <%= '*dependency' if country.is_dependency? %>
+       </span>
+     </td>
+     <td  style='white-space: nowrap;'>
         <% if country.fifa.present? %>
           <% if country.fifa != country.code %>
             <span class='code-ne'><%= country.fifa %> &ne;</span>
@@ -44,7 +50,7 @@
         <% end %>
     </td>
      <td><%= country.code %></td>
-     <td>
+     <td  style='white-space: nowrap;'>
         <% if country.iso3.present? %>
           <% if country.iso3 != country.code %>
             <span class='code-ne'>&ne; <%= country.iso3 %></span>
@@ -65,7 +71,7 @@
      <td>
         <!-- check if un tag present
            fix: find a better way!! -->
-        <% tags = country.tags.select { |tag| tag.key == 'un' } %>
+        <% tags = country.tags.top.select { |tag| tag.key == 'un' } %>
         <% if tags.size > 0 %>
            Yes
         <% else %>
@@ -75,17 +81,25 @@
      <td>
         <!-- check if un tag present
            fix: find a better way!! -->
-        <% tags = country.tags.select { |tag| tag.key == 'fifa' } %>
+        <% tags = country.tags.top.select { |tag| tag.key == 'fifa' } %>
         <% if tags.size > 0 %>
            Yes
         <% else %>
             <span class='code-x'>x</span>
         <% end %>
      </td>
-     <td class='country-key'><!-- use country-flags -->
-        <%= 'supra'      if country.is_supra?      %>
-        <%= 'dependency' if country.is_dependency? %>
-     </td>
+     <td>
+       <% if country.langs.count > 0 %>
+  <% country.langs.each_with_index do |lang,index| %>
+           <span class='lang-key'>
+             <%= lang.key %>
+           </span>
+           <%= lang.title %>
+   <% end %>
+       <% else %>
+            <span class='code-x'>x</span>
+       <% end %>
+     </td>     
     </tr>
   <% end %><!-- each country -->
 </table>

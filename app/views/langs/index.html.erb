@@ -1,0 +1,28 @@
+
+<h3><%= Lang.count %> Languages</h3>
+
+<table>
+<% @langs.each do |lang| %>
+ 
+  <tr>
+    <td class='lang-key'>
+      <%= lang.key %>
+    </td>
+    <td>
+      <%= lang.title %>
+    </td>
+    <td>
+      <span class='lang-count'>
+        (<%= lang.countries.count %>)
+        </span>
+    </td>
+    <td>
+         <% lang.countries.each_with_index do |country,index| %>
+           <%= '•' if index > 0 %>
+           <%= image_tag_for_country( country ) %>
+           <%= link_to country.title,  short_country_path( country ) %>
+         <% end %><!-- each country -->
+    </td>
+  </tr>
+<% end %>
+</table>

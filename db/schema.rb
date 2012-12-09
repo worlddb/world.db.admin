@@ -57,6 +57,13 @@ ActiveRecord::Schema.define(:version => 20121004210237) do
   add_index "countries", ["code"], :name => "index_countries_on_code", :unique => true
   add_index "countries", ["key"], :name => "index_countries_on_key", :unique => true
 
+  create_table "langs", :force => true do |t|
+    t.string   "key",        :null => false
+    t.string   "title",      :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "props", :force => true do |t|
     t.string   "key",        :null => false
     t.string   "value",      :null => false
@@ -90,13 +97,24 @@ ActiveRecord::Schema.define(:version => 20121004210237) do
   add_index "taggings", ["taggable_id", "taggable_type"], :name => "index_taggings_on_taggable_id_and_taggable_type"
 
   create_table "tags", :force => true do |t|
-    t.string   "key",        :null => false
-    t.string   "slug",       :null => false
+    t.string   "key",                       :null => false
+    t.string   "slug",                      :null => false
     t.string   "title"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "grade",      :default => 1, :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
   end
 
   add_index "tags", ["key"], :name => "index_tags_on_key", :unique => true
+
+  create_table "usages", :force => true do |t|
+    t.integer  "country_id",                    :null => false
+    t.integer  "lang_id",                       :null => false
+    t.boolean  "official",   :default => true,  :null => false
+    t.boolean  "minor",      :default => false, :null => false
+    t.float    "percent"
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
 
 end

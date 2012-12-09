@@ -16,8 +16,23 @@
 </h3>
 
 <p>
-  <%= render_tags( @country.tags ) %>
+  <%= render_tags( @country.tags.top ) %>
 </p>
+
+<% if @country.langs.count > 0 %>
+<h4><%= @country.langs.count %> Languages</h4>
+<p>
+    <% @country.langs.each_with_index do |lang,index| %>
+           <%= '•' if index > 0 %>
+           <span class='lang-key'>
+             <%= lang.key %>
+           </span>
+           <%= lang.title %>
+           
+         <% end %><!-- each lang -->
+</p>
+<% end %>
+
 
 <% if @country.countries.count > 0 %>
 <h4><%= @country.countries.count %> Countries</h4>
@@ -34,7 +49,7 @@
       <td style='vertical-align: baseline;'>
         <%= link_to country.title_w_synonyms, short_country_path( country ) %>
         <br>
-        <%= render_tags( country.tags ) %>
+        <%= render_tags( country.tags.top ) %>
       </td>
      </tr>
   <% end %> <!-- each region -->

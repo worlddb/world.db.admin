@@ -38,14 +38,14 @@
       <%= country.key %>
     </td>
     <td style='vertical-align: baseline;'>
-      <%= image_tag "flags/24x24/#{country.key}.png" %>
+      <%= image_tag_for_country( country ) %>
     </td>
     <td style='vertical-align: baseline;'>
       <span style='white-space: nowrap;'>
 <%= link_to "#{country.title} (#{country.code})", short_country_path( country ) %>
       </span>
       <br>
-      <%= render_tags( country.tags ) %>
+      <%= render_tags( country.tags.top ) %>
     </td>
     <td style='white-space: nowrap; vertical-align: baseline;'>
       <%= number_to_human( country.pop ) %>

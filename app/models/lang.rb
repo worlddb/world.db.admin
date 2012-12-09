@@ -1,0 +1,2 @@
+
+Lang = WorldDB::Models::Lang

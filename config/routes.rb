@@ -10,9 +10,9 @@ Sportdb::Application.routes.draw do
   
   # 2 lower case letters / 2 lower case letters - assume shortcut for country/region
   match '/:country_key/:key', :to => 'regions#shortcut', :as => :short_region_worker, :country_key => /[a-z]{2}/, :key => /[a-z]{2}/
-  
-  match '/tag/:key', :to => 'tags#shortcut', :as => :short_tag_worker, :key => /[a-z][a-z0-9_]+/
-  
+
+  match '/tag/:key', :to => 'tags#shortcut', :as => :short_tag_worker, :key => /[a-z][a-z0-9_]*/
+    
     
   #############################    
   # routes for data export (comma separated values/csv or html table or json)  
@@ -27,6 +27,7 @@ Sportdb::Application.routes.draw do
   resources :tags
   resources :cities
   resources :codes
+  resources :langs
 
 
   ###############################
