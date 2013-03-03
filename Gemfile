@@ -1,16 +1,19 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.1'
+gem 'rails', '3.2.12'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
+gem 'sinatra'
 
 
 ############
 ## lets use open world.db schema & fixtures
 
-gem 'worlddb', '0.8.0'
+gem 'logutils', '0.6.0'
 
+gem 'worlddb-data', '99', :git => 'git://github.com/geraldb/world.db.git'
+
+gem 'worlddb', '1.4.0'
+gem 'worlddb-service', '0.1.0', :git => 'git://github.com/geraldb/world.db.api.git'
 
 group :production do
   gem 'pg'

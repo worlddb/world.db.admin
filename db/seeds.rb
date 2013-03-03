@@ -1,7 +1,6 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+
+LogDB.delete!
+WorldDB.delete!  # danger zone! deletes all records
+
+WorldDB.read_all( find_world_db_path_from_gemfile_gitref! )
+WorldDB.stats

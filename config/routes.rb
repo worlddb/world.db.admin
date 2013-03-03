@@ -2,6 +2,19 @@ Sportdb::Application.routes.draw do
   
   match 'about',    :to => 'pages#about'
 
+  ###
+  # mount sinatra app (bundled w/ worlddb-service gem) for json api service
+
+  # todo: add  JSON API link to layout
+
+  match '/api' => redirect('/api/v1')
+  mount WorldDB::Service::Server, :at => '/api/v1'  # NB: make sure to require 'worlddb-service'
+
+  ## mount sinatra app (bundled w/ logutils gem)
+  mount LogDb::Server, :at => '/logs'    # NB: make sure to require 'logutils/server'
+
+
+
   ###############################
   # routes for shortcuts (friendly urls)
   
@@ -12,16 +25,8 @@ Sportdb::Application.routes.draw do
   match '/:country_key/:key', :to => 'regions#shortcut', :as => :short_region_worker, :country_key => /[a-z]{2}/, :key => /[a-z]{2}/
 
   match '/tag/:key', :to => 'tags#shortcut', :as => :short_tag_worker, :key => /[a-z][a-z0-9_]*/
-    
-    
-  #############################    
-  # routes for data export (comma separated values/csv or html table or json)  
 
-  match '/dl/countries',  :to => 'export#countries',        :as => :dl_countries
-  match '/dl/tag/:key',   :to => 'export#countries_by_tag', :as => :dl_countries_by_tag_worker, :key => /[a-z][a-z0-9_]+/
-  match '/dl/cities',     :to => 'export#cities',           :as => :dl_cities
 
-     
   resources :countries
   resources :regions
   resources :tags
