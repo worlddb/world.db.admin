@@ -13,4 +13,4 @@
 #
 
 
-City = WorldDB::Models::City
+City = WorldDb::Models::City

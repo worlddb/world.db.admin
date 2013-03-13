@@ -10,5 +10,4 @@
 #
 
 
-Prop = WorldDB::Models::Prop
-
+Prop = WorldDb::Models::Prop

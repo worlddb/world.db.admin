@@ -33,25 +33,36 @@ ActiveRecord::Schema.define(:version => 20121004210237) do
     t.datetime "updated_at",                    :null => false
   end
 
-  create_table "countries", :force => true do |t|
-    t.string   "title",                         :null => false
-    t.string   "key",                           :null => false
-    t.string   "code",                          :null => false
+  create_table "continents", :force => true do |t|
+    t.string   "title",      :null => false
+    t.string   "key",        :null => false
     t.string   "synonyms"
-    t.integer  "pop",                           :null => false
-    t.integer  "area",                          :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "continents", ["key"], :name => "index_continents_on_key", :unique => true
+
+  create_table "countries", :force => true do |t|
+    t.string   "title",                           :null => false
+    t.string   "key",                             :null => false
+    t.string   "code",                            :null => false
+    t.string   "synonyms"
+    t.integer  "pop",                             :null => false
+    t.integer  "area",                            :null => false
+    t.integer  "continent_id"
     t.integer  "country_id"
-    t.boolean  "s",          :default => false, :null => false
-    t.boolean  "c",          :default => false, :null => false
-    t.boolean  "d",          :default => false, :null => false
+    t.boolean  "s",            :default => false, :null => false
+    t.boolean  "c",            :default => false, :null => false
+    t.boolean  "d",            :default => false, :null => false
     t.string   "motor"
     t.string   "iso2"
     t.string   "iso3"
     t.string   "fifa"
     t.string   "net"
     t.string   "wikipedia"
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
   end
 
   add_index "countries", ["code"], :name => "index_countries_on_code", :unique => true

@@ -1,10 +1,10 @@
 class CreateDb < ActiveRecord::Migration
   def up
-    LogDB.create
-    WorldDB.create
+    LogDb.create
+    WorldDb.create
   end
 
   def down
-    raise IrreversibleMigration
+    raise ActiveRecord::IrreversibleMigration
   end
 end

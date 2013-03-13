@@ -11,4 +11,4 @@
 #
 
 
-Country = WorldDB::Models::Country
+Country = WorldDb::Models::Country
