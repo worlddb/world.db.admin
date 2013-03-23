@@ -38,13 +38,24 @@ COUNTRY_FILTER_TAGS = [
   'g5',
   'g20',
   'fifa',
-  'uefa',
-  'pop_100m_n_up',
-  'pop_10m_n_up',
-  'pop_1m_n_up',
-  'area_1_000_000_n_up',
-  'area_100_000_n_up',
-  'area_1_000_n_up'
+  'uefa',     # europe
+  'caf',      # africa
+  'afc',      # asia
+  'afc waff', # Middle East / West Asia
+  'ofc',      # pacific
+  'concacaf', # north&central america n caribbean
+  'concacaf nafu',   # North America
+  'concacaf uncaf',  # Central America
+  'concacaf cfu',    # Caribbean
+  'conmebol'  # south america
+
+  
+#  'pop_100m_n_up',
+#  'pop_10m_n_up',
+#  'pop_1m_n_up',
+#  'area_1_000_000_n_up',
+#  'area_100_000_n_up',
+#  'area_1_000_n_up'
 ]
 
 class CountriesController < ApplicationController

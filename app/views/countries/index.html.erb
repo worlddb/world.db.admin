@@ -2,6 +2,20 @@
 
 <h3><%= @countries.count %> Countries / <%= City.count %> Cities</h3>
 
+<p>
+  All
+   <span class='country-count'>
+    (<%= @countries.count %>)
+   </span>
+<% Continent.all.each do |continent| %>
+    &bull; 
+   <%= continent.title %>
+   <span class='country-count'>
+      (<%= continent.countries.count %>)
+   </span>
+<% end %>
+</p>
+
 
 
 <p>
@@ -36,6 +50,9 @@
 <table>
 <% @countries.each do |country| %>
   <tr>
+    <td>
+      <%= country.continent.title if country.continent.present? %>
+    </td>
     <td class='country-key'  style='vertical-align: baseline;'>
       <%= country.key %>
     </td>
