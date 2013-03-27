@@ -63,11 +63,11 @@ class CountriesController < ApplicationController
   # GET /countries
   def index
 
-    ## for now store order and tag in session    
+    ## for now store order and tag in session
     ## todo/fix: find a  better way to store user order and filter settings
     
     session[:order] = order = params[:order] || session[:order] || 'title'
-    session[:tag]   = tag   = params[:tag]   || session[:tag]   || 'all'    
+    session[:tag]   = tag   = params[:tag]   || session[:tag]   || 'all'
     
     @countries = nil    
 
@@ -80,7 +80,8 @@ class CountriesController < ApplicationController
     else
       @countries = Country.by_title
     end
-        
+   
+=begin        
     if tag == 'all'
       ## do nothing; include all
     else 
@@ -89,8 +90,39 @@ class CountriesController < ApplicationController
     
       @countries = @countries.find( country_ids )      
     end
-
+=end
+    @countries = @countries.where( c: true ).all
   end
+
+  def index_territories
+
+    session[:order] = order = params[:order] || session[:order] || 'title'
+    session[:tag]   = tag   = params[:tag]   || session[:tag]   || 'all'
+    
+    @countries = nil    
+
+    if order == 'pop'
+      @countries = Country.by_pop
+    elsif order == 'area'
+      @countries = Country.by_area
+    elsif order == 'title'    
+      @countries = Country.by_title
+    else
+      @countries = Country.by_title
+    end
+
+=begin        
+    if tag == 'all'
+      ## do nothing; include all
+    else 
+      ## fix/todo:  add with_tag() scope to Country!!!    
+      country_ids = Tag.find_by_key!( tag ).country_ids
+    
+      @countries = @countries.find( country_ids )      
+=end
+    @countries = @countries.where( d: true ).all
+  end
+  
   
   # GET /:key  e.g  /at or /us etc.
   def shortcut

@@ -11,7 +11,7 @@
     &bull; 
    <%= continent.title %>
    <span class='country-count'>
-      (<%= continent.countries.count %>)
+      (<%= continent.countries.where( c: true ).count %>)
    </span>
 <% end %>
 </p>
@@ -36,6 +36,7 @@
 </p>
 
 
+<!--
 <p>
   Filter By:
    <% COUNTRY_FILTER_TAGS.each_with_index do |tag,index| %>
@@ -45,43 +46,6 @@
       <%= link_to tag, countries_path( :tag => tag ) %>
    <% end %>
 </p>
+-->
 
-
-<table>
-<% @countries.each do |country| %>
-  <tr>
-    <td>
-      <%= country.continent.title if country.continent.present? %>
-    </td>
-    <td class='country-key'  style='vertical-align: baseline;'>
-      <%= country.key %>
-    </td>
-    <td style='vertical-align: baseline;'>
-      <%= image_tag_for_country( country ) %>
-    </td>
-    <td style='vertical-align: baseline;'>
-      <span style='white-space: nowrap;'>
-<%= link_to "#{country.title} (#{country.code})", short_country_path( country ) %>
-      </span>
-      <br>
-      <%= render_tags( country.tags.top ) %>
-    </td>
-    <td style='white-space: nowrap; vertical-align: baseline;'>
-      <%= number_to_human( country.pop ) %>
-    </td>
-    <td style='white-space: nowrap; vertical-align: baseline;'>
-      <%= number_to_human( country.area ) %> km²
-    </td>
-    
-    <td  style='vertical-align: baseline; text-align: right;'>
-<span class='city-count'>
-(<%= country.cities.count %>)
-</span>
-    </td>
-    <td style='vertical-align: baseline;'>
-      <%= render_cities( country.cities ) %>
-    </td>
-  </tr>
-      
-<% end %><!-- each country -->
-</table>
+<%= render :partial => 'countries', :locals => { :countries => @countries } %>

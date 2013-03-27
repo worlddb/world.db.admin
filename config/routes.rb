@@ -27,6 +27,10 @@ Sportdb::Application.routes.draw do
   match '/tag/:key', :to => 'tags#shortcut', :as => :short_tag_worker, :key => /[a-z][a-z0-9_]*/
 
 
+  match 'territories', :to => 'countries#index_territories', :as => 'territories'
+
+
+  resources :continents
   resources :countries
   resources :regions
   resources :tags

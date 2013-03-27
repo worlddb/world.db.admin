@@ -98,6 +98,9 @@ ActiveRecord::Schema.define(:version => 20121004210237) do
     t.string   "title",      :null => false
     t.string   "key",        :null => false
     t.string   "code"
+    t.string   "abbr"
+    t.string   "iso"
+    t.string   "nuts"
     t.string   "synonyms"
     t.integer  "country_id", :null => false
     t.integer  "pop"

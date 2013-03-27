@@ -1,0 +1,42 @@
+
+
+<h3><%= @countries.count %> Territories / <%= City.count %> Cities</h3>
+
+<p>
+  All
+   <span class='country-count'>
+    (<%= @countries.count %>)
+   </span>
+<% Continent.all.each do |continent| %>
+    &bull; 
+   <%= continent.title %>
+   <span class='country-count'>
+      (<%= continent.countries.where( d: true ).count %>)
+   </span>
+<% end %>
+</p>
+
+
+
+<p>
+  Sort By: <%= link_to 'A-Z', territories_path( :order => 'title' )  %>
+          &bull;
+        <%= link_to 'Population', territories_path( :order => 'pop' ) %>
+          &bull;
+        <%= link_to 'Area (in km²)', territories_path( :order => 'area' ) %>
+</p>
+
+
+<!--
+<p>
+  Filter By:
+   <% COUNTRY_FILTER_TAGS.each_with_index do |tag,index| %>
+      <% if index > 0 %>
+         &bull;
+      <% end %>
+      <%= link_to tag, countries_path( :tag => tag ) %>
+   <% end %>
+</p>
+-->
+
+<%= render :partial => 'countries', :locals => { :countries => @countries } %>
