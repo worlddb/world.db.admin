@@ -1,0 +1,22 @@
+<!-- requires para regions
+     optional count
+  -->
+
+<span class='regions'>
+  <% regions.each_with_index do |region,index| %>
+    <% if index > 0 %>
+      &nbsp;
+    <% end %>
+     <span class='region-key'>
+      <%= "#{region.country.key}.#{region.key}" %>
+     </span>
+     <%= link_to region.title, short_region_path( region ) %>
+  <% end %>
+
+  <% if count.present? %>
+     <span class='region-count'>
+      (<%= count %>)
+     </span>
+  <% end %>
+
+</span>

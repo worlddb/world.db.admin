@@ -5,6 +5,22 @@
 </h3>
 
 
+
+
+<p>
+  Sort By: <%= link_to 'Key A-Z', continents_path( :order => 'key' )  %>
+          &bull;
+          <%= link_to 'Title A-Z', continents_path( :order => 'title' )  %>
+          &bull;
+          <%= link_to 'Code A-Z', continents_path( :order => 'code' )  %>
+          &bull;
+        <%= link_to 'Population', continents_path( :order => 'pop' ) %>
+          &bull;
+        <%= link_to 'Area (in km²)', continents_path( :order => 'area' ) %>
+</p>
+
+
+
 <% Continent.all.each do |continent| %>
 
 <h4>
@@ -13,56 +29,28 @@
 
   <% count = continent.countries.where( s: true ).count
      if count > 0
-   %> 
+   %>
 <p>
-
-      <% continent.countries.where( s: true ).each do |country| %>
-        <span class='country-key'><%= country.key %></span>
-          <%= image_tag_for_country( country ) %>
-        <%= link_to "#{country.title} (#{country.code})", short_country_path( country ) %>
-      <% end %>
-
-   <span class='country-count'>
-      (<%= count %>)
-   </span>
-
+   <%= render_countries( continent.countries.where( s: true ), order: @order, count: count ) %>
 </p>
 <% end %>
 
 
   <% count = continent.countries.where( c: true ).count
      if count > 0
-   %> 
+   %>
 <p>
-      <% continent.countries.where( c: true ).each do |country| %>
-        <span class='country-key'><%= country.key %></span>
-         <%= image_tag_for_country( country ) %>
-        <%= link_to "#{country.title} (#{country.code})", short_country_path( country ) %>
-      <% end %> 
-
-   <span class='country-count'>
-      (<%= count %>)
-   </span>
+   <%= render_countries( continent.countries.where( c: true ), order: @order, count: count ) %>
 </p>
 <% end %>
 
 
   <% count = continent.countries.where( d: true ).count
      if count > 0
-   %> 
+   %>
 <p>
-      <% continent.countries.where( d: true ).each do |country| %>
-        <span class='country-key'><%= country.key %></span>
-         <%= image_tag_for_country( country ) %>
-        <%= link_to "#{country.title} (#{country.code})", short_country_path( country ) %>
-        <!--
-        / <%= country.parent.title %> (<%= country.parent.code %>)
-         -->
-      <% end %>
-   <span class='country-count'>
-      (<%= count %>)
-   </span>
+   <%= render_countries( continent.countries.where( d: true ), order: @order, count: count ) %>
 </p>
 <% end %>
 
-<% end %><!-- each continent %>
+<% end %><!-- each continent -->

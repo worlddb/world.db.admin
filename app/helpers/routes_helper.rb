@@ -41,8 +41,8 @@ module RoutesHelper
   ##############################
   ## routes for shortcuts
   
-  def short_country_path( country )
-    short_country_worker_path( country.key )
+  def short_country_path( country, opts={} )
+    short_country_worker_path( country.key, opts )
   end
 
   def short_region_path( region )
@@ -53,9 +53,9 @@ module RoutesHelper
     short_city_worker_path( city.key )
   end
   
-  def short_tag_path( tag )
+  def short_tag_path( tag, opts={} )
     ## NB: tag needs slug NOT key (key may contain spaces)
-    short_tag_worker_path( tag.slug )
+    short_tag_worker_path( tag.slug, opts )
   end
   
 end # module RoutesHelper  

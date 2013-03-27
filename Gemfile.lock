@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/geraldb/world.db.git
-  revision: 26dcf7e25f48c11776c5244a12d83b1756d28206
+  revision: 1c45e8bc3aef06a3f307ae0fd556ecb1789278ff
   specs:
     worlddb-data (99)
 

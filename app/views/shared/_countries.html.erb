@@ -1,0 +1,23 @@
+
+<!-- requires para countries
+     optional count
+  -->
+
+<span class='countries'>
+ <% countries.each_with_index do |country,index| %>
+     <% if index > 0 %>
+      &nbsp;
+    <% end %>
+    <span class='country-key'><%= country.key %></span>
+      <%= image_tag_for_country( country ) %>
+      <%= link_to "#{country.title} (#{country.code})", short_country_path( country ) %>
+  <% end %><!-- each country -->
+
+
+  <% if count.present? %>
+     <span class='country-count'>
+      (<%= count %>)
+     </span>
+  <% end %>
+
+</span>

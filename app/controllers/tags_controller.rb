@@ -10,7 +10,8 @@ class TagsController < ApplicationController
   
   # GET /tag/:key e.g. /tag/euro or /tag/north_america
   def shortcut
-    @tag = Tag.find_by_slug!( params[:key] )
+    @tag   = Tag.find_by_slug!( params[:key] )
+    @order = params[:order] || 'title'
 
     ## magic parameter for dev -> generate yaml text template
     if params[:yml].present? || params[:yaml].present?

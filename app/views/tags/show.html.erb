@@ -1,8 +1,22 @@
 
 <h3><%= @tag.key %></h3>
 
+<p>
+  Sort By: <%= link_to 'Key A-Z', short_tag_path( @tag, order: 'key' )  %>
+          &bull;
+          <%= link_to 'Title A-Z', short_tag_path( @tag, order: 'title' )  %>
+          &bull;
+          <%= link_to 'Code A-Z', short_tag_path( @tag, order: 'code' )  %>
+          &bull;
+        <%= link_to 'Population', short_tag_path( @tag, order: 'pop' ) %>
+          &bull;
+        <%= link_to 'Area (in km²)', short_tag_path( @tag, order: 'area' ) %>
+</p>
+
+
+
 <% if @tag.countries.count > 0 %>
-<h4><%= @tag.countries.count %> Countries</h4>
+<h4>Countries</h4>
 
 <p>
   Download: <%= link_to 'CSV', csv_countries_by_tag_path( @tag ), :title => 'Comma-separated values; tabular data in plain text' %>     
@@ -10,32 +24,40 @@
    <%= link_to 'Table', table_countries_by_tag_path( @tag ), :title => 'Hypertext table' %>   
 </p>
 
+<% count = @tag.countries.where( s: true ).count
+     if count > 0
+%>
 <p>
-  <% @tag.countries.each_with_index do |country,index| %>
-    <% if index > 0 %>
-      &nbsp;
-    <% end %>
-     <span class='country-key'>
-      <%= country.key %>
-     </span> 
-     <%= image_tag_for_country( country ) %>
-     <%= link_to "#{country.title} (#{country.code})", short_country_path( country ) %>
-  <% end %>
+   <%= render_countries( @tag.countries.where( s: true ), count: count, order: @order) %>
 </p>
 <% end %>
 
-<% if @tag.regions.count > 0 %>
-<h4><%= @tag.regions.count %> Regions</h4>
+<% count = @tag.countries.where( c: true ).count
+     if count > 0
+%>
+<p>
+   <%= render_countries( @tag.countries.where( c: true ), count: count, order: @order) %>
+</p>
+<% end %>
+
+<% count = @tag.countries.where( d: true ).count
+     if count > 0
+%>
+<p>
+   <%= render_countries( @tag.countries.where( d: true ), count: count, order: @order) %>
+</p>
+<% end %>
+
+<% end %>
+
+
+
+<% count = @tag.regions.count
+   if count > 0
+%>
+<h4>Regions</h4>
 
 <p>
-  <% @tag.regions.each_with_index do |region,index| %>
-    <% if index > 0 %>
-      &nbsp;
-    <% end %>
-     <span class='region-key'>
-      <%= "#{region.country.key}.#{region.key}" %>
-     </span>
-     <%= link_to region.title, short_region_path( region ) %>
-  <% end %>
+  <%= render_regions( @tag.regions, count: count, order: @order) %>
 </p>
 <% end %>
