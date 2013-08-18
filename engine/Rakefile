@@ -1,0 +1,26 @@
+require 'hoe'
+require './lib/worlddb/admin/version.rb'
+
+
+Hoe.spec 'worlddb-admin' do
+
+  self.version = WorldDbAdmin::VERSION
+
+  self.summary = 'worlddb admin addon - rails engine'
+  self.description = summary
+
+  self.urls    = ['https://github.com/geraldb/world.db.admin']
+
+  self.author  = 'Gerald Bauer'
+  self.email   = 'opensport@googlegroups.com'
+
+  self.readme_file  = 'README.md'
+  self.history_file = 'History.md'
+
+  self.licenses = ['Public Domain']
+
+  self.spec_extras = {
+   :required_ruby_version => '>= 1.9.2'
+  }
+
+end
