@@ -1,6 +1,10 @@
 
+puts "[boot] routes.rb - before WorldDbAdmin::Engine.routes.draw"
+
 WorldDbAdmin::Engine.routes.draw do
-  
+
+  puts "[boot] routes.rb - enter WorldDbAdmin::Engine.routes.draw"
+
   match 'about',    :to => 'pages#about'
 
 
@@ -37,4 +41,8 @@ WorldDbAdmin::Engine.routes.draw do
   
   root :to => 'countries#index'
 
+  puts "[boot] routes.rb - leave WorldDbAdmin::Engine.routes.draw"
+
 end
+
+puts "[boot] routes.rb - after WorldDbAdmin::Engine.routes.draw"
