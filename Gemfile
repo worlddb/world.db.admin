@@ -10,12 +10,19 @@ gem 'sinatra'
 
 gem 'logutils', '0.6.0'
 
-gem 'worlddb-data', '99', :git => 'https://github.com/geraldb/world.db.git'
+gem 'worlddb-data', '9.9.9', :git => 'https://github.com/geraldb/world.db.git'
 
-gem 'worlddb', '1.6.3'
+gem 'worlddb', '1.7.2'
 gem 'worlddb-service', '0.1.0'
 
 gem 'worlddb-flags', '0.1.0'   # use bundled country flags
+
+
+########
+# add engines
+
+gem 'worlddb-admin', '0.0.1', :path => './engine'
+
 
 group :production do
   gem 'pg'

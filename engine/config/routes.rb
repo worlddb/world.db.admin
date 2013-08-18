@@ -1,18 +1,7 @@
-Sportdb::Application.routes.draw do
+
+WorldDbAdmin::Engine.routes.draw do
   
   match 'about',    :to => 'pages#about'
-
-  ###
-  # mount sinatra app (bundled w/ worlddb-service gem) for json api service
-
-  # todo: add  JSON API link to layout
-
-  match '/api' => redirect('/api/v1')
-  mount WorldDB::Service::Server, :at => '/api/v1'  # NB: make sure to require 'worlddb-service'
-
-  ## mount sinatra app (bundled w/ logutils gem)
-  mount LogDb::Server, :at => '/logs'    # NB: make sure to require 'logutils/server'
-
 
 
   ###############################

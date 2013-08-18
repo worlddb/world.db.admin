@@ -1,6 +1,8 @@
 # encoding: utf-8
 
-class CitiesController < ApplicationController
+module WorldDbAdmin
+
+class CitiesController < WorldDbAdminController
 
   # GET /cities
   def index
@@ -22,3 +24,5 @@ class CitiesController < ApplicationController
   end
 
 end # class CitiesController
+
+end  # module WorldDbAdmin

@@ -1,6 +1,8 @@
 # encoding: utf-8
 
-class TagsController < ApplicationController
+module WorldDbAdmin
+
+class TagsController < WorldDbAdminController
 
   # GET /tags
   def index
@@ -28,3 +30,5 @@ class TagsController < ApplicationController
   end
 
 end # class TagsController
+
+end  # module WorldDbAdmin

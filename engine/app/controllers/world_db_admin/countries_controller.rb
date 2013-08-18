@@ -1,5 +1,6 @@
 # encoding: utf-8
 
+module WorldDbAdmin
 
 COUNTRY_FILTER_TAGS = [
   'all',
@@ -58,7 +59,7 @@ COUNTRY_FILTER_TAGS = [
 #  'area_1_000_n_up'
 ]
 
-class CountriesController < ApplicationController
+class CountriesController < WorldDbAdminController
 
   # GET /countries
   def index
@@ -136,3 +137,6 @@ class CountriesController < ApplicationController
   end
     
 end # class CountriesController
+
+
+end  # module WorldDbAdmin

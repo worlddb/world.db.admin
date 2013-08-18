@@ -1,10 +1,14 @@
+# encoding: utf-8
+
+module WorldDbAdmin
+
 module ApplicationHelper
   
   def powered_by
     ## todo/fix: use version from wettpool module
     content_tag :div do
       link_to( 'Questions? Comments?', 'http://groups.google.com/group/opensport' ) + " | " +
-      link_to( "world.db/#{WorldDB::VERSION}", 'https://github.com/geraldb/world.db' )  + ', ' +
+      link_to( "world.db/#{WorldDb::VERSION}", 'https://github.com/geraldb/world.db' )  + ', ' +
       link_to( 'world.db.admin/1', 'https://github.com/geraldb/world.db.admin' ) + ' - ' + 
       content_tag( :span, "Ruby/#{RUBY_VERSION} (#{RUBY_RELEASE_DATE}/#{RUBY_PLATFORM}) on") + ' ' +
       content_tag( :span, "Rails/#{Rails.version} (#{Rails.env})" ) + " | " + 
@@ -73,5 +77,6 @@ module ApplicationHelper
   end
 
 
-
 end # module ApplicationHelper
+
+end  # module WorldDbAdmin

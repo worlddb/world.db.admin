@@ -1,5 +1,7 @@
 # encoding: utf-8
 
+module WorldDbAdmin
+
 module RoutesHelper
 
   ################################
@@ -58,4 +60,6 @@ module RoutesHelper
     short_tag_worker_path( tag.slug, opts )
   end
   
-end # module RoutesHelper  
+end # module RoutesHelper
+
+end  # module WorldDbAdmin

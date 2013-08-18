@@ -1,6 +1,8 @@
 # encoding: utf-8
 
-class ContinentsController < ApplicationController
+module WorldDbAdmin
+
+class ContinentsController < WorldDbAdminController
 
   # GET /continents
   def index
@@ -10,3 +12,5 @@ class ContinentsController < ApplicationController
   end
 
 end # class ContinentsController
+
+end  # module WorldDbAdmin

@@ -1,5 +1,7 @@
 # encoding: utf-8
 
+module WorldDbAdmin
+
 module PartHelper
 
   ###################################
@@ -8,11 +10,11 @@ module PartHelper
   # by convention all start w/ render_
 
   def render_tags( tags )
-    render :partial => 'shared/tags', :locals => { :tags => tags }
+    render :partial => 'world_db_admin/shared/tags', :locals => { :tags => tags }
   end
 
   def render_cities( cities )
-    render :partial => 'shared/cities', :locals => { :cities => cities }
+    render :partial => 'world_db_admin/shared/cities', :locals => { :cities => cities }
   end
   
   
@@ -28,7 +30,7 @@ module PartHelper
       end
     end
 
-    render :partial => 'shared/countries',
+    render :partial => 'world_db_admin/shared/countries',
            :locals => { :countries => countries,
                         :count => opts[:count] }
   end
@@ -45,10 +47,12 @@ module PartHelper
       end
     end
 
-    render :partial => 'shared/regions',
+    render :partial => 'world_db_admin/shared/regions',
            :locals => { :regions => regions,
                         :count => opts[:count] }
   end
 
 
 end # module PartHelper
+
+end  # module WorldDbAdmin

@@ -1,6 +1,8 @@
 # encoding: utf-8
 
-class CodesController < ApplicationController
+module WorldDbAdmin
+
+class CodesController < WorldDbAdminController
 
   # GET /code
   def index
@@ -8,3 +10,5 @@ class CodesController < ApplicationController
   end
     
 end # class CodesController
+
+end  # module WorldDbAdmin

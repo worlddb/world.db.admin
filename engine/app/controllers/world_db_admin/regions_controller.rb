@@ -1,6 +1,8 @@
 # encoding: utf-8
 
-class RegionsController < ApplicationController
+module WorldDbAdmin
+
+class RegionsController < WorldDbAdminController
 
   # GET /regions
   def index
@@ -19,3 +21,5 @@ class RegionsController < ApplicationController
 
 
 end # class RegionsController
+
+end  # module WorldDbAdmin
