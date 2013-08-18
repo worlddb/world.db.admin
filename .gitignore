@@ -20,6 +20,3 @@ pickle-email-*.html
 
 /db/world.db
 
-### ignore komodo files
-
-*.kpf

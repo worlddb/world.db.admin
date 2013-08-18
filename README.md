@@ -1,5 +1,4 @@
-world.db.admin
-==============
+# world.db.admin
 
 Open World Database Web Admin Tool in Ruby on Rails (version 3.2 and up)
 
@@ -17,4 +16,5 @@ Use it as you please with no restrictions whatsoever.
 
 ## Questions? Comments?
 
-Send them along to the [Open Sports Database & Friends Forum/Mailing List](http://groups.google.com/group/opensport). Thanks!
+Send them along to the [Open Sports Database & Friends Forum/Mailing List](http://groups.google.com/group/opensport).
+Thanks!
