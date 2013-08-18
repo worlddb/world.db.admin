@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Sportdb::Application.load_tasks
+Worlddbhost::Application.load_tasks

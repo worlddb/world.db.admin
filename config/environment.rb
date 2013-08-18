@@ -14,5 +14,7 @@ require 'logutils/server'  # LogDb::Server
 LogUtils::Logger.root.level = :info    # do not output debug msgs
 
 
+
+
 # Initialize the rails application
-Sportdb::Application.initialize!
+Worlddbhost::Application.initialize!
