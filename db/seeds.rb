@@ -2,5 +2,5 @@
 LogDb.delete!
 WorldDb.delete!  # danger zone! deletes all records
 
-WorldDb.read_all( find_world_db_path_from_gemfile_gitref! )
+WorldDb.read_setup( 'setups/all', find_data_path_from_gemfile_gitref('world.db') )
 WorldDb.stats
