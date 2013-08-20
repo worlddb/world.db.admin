@@ -18,11 +18,14 @@
 <% if @tag.countries.count > 0 %>
 <h4>Countries</h4>
 
+<% if worlddb_api_defined? %>
 <p>
   Download: <%= link_to 'CSV', csv_countries_by_tag_path( @tag ), :title => 'Comma-separated values; tabular data in plain text' %>     
     &bull;
    <%= link_to 'Table', table_countries_by_tag_path( @tag ), :title => 'Hypertext table' %>   
 </p>
+<% end %>
+
 
 <% count = @tag.countries.where( s: true ).count
      if count > 0

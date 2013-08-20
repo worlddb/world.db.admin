@@ -17,10 +17,19 @@
   <%= link_to 'Tags', tags_path() %>  &bull;  
   <%= link_to 'Languages', langs_path() %>  &bull;  
   <%= link_to 'Codes', codes_path() %>  &bull;  
-  <%= link_to 'About', about_path() %> .::.
+  <%= link_to 'About', about_path() %>
   
-  <!-- fix: use named url_helper for /api -->
-  <%= link_to "Web Service Demo & Docu / HTTP API (JSON / CSV)", '/api' %>
+    
+  <% if worlddb_api_defined? %>
+
+     .::.
+
+    <!-- fix: use named url_helper for /api
+        fix: use main_app.api_path() ??? why? why not?
+     -->
+     <%= link_to "Web Service Demo & Docu / HTTP API (JSON / CSV)", '/api' %>
+  <% end %>
+
   <!-- todo: add some more links -->
  </p>
 

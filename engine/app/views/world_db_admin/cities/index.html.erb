@@ -10,11 +10,14 @@
           &bull;
         <%= link_to 'Metro Population', cities_path( :order => 'popm' ) %>
 
-        &nbsp; &nbsp; | &nbsp; &nbsp;
+<% if worlddb_api_defined? %>
+        
+  &nbsp; &nbsp; | &nbsp; &nbsp;
         
    Download: <%= link_to 'CSV', csv_cities_path(), :title => 'Comma-separated values; tabular data in plain text' %>
           &bull;
-       <%= link_to 'Table', table_cities_path(), :title => 'Hypertext table' %>   
+       <%= link_to 'Table', table_cities_path(), :title => 'Hypertext table' %>
+<% end %>
 </p>
 
 
