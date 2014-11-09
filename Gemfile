@@ -4,16 +4,19 @@ gem 'rails', '3.2.12'
 
 gem 'sinatra'
 
+gem 'fetcher'   # used for fetching/downloading zip archives (datasets)
 
 ############
 ## lets use open world.db schema & fixtures
 
 gem 'logutils', '0.6.0'
 
-gem 'worlddb-data', '9.9.9', :git => 'https://github.com/geraldb/world.db.git'
+gem 'worlddb', '2.0.5'
 
-gem 'worlddb', '1.7.2'
-gem 'worlddb-service', '0.1.0'
+
+#### fix/todo: add back in api service
+## gem 'worlddb-service', '0.1.0'
+
 
 gem 'worlddb-flags', '0.1.0'   # use bundled country flags
 

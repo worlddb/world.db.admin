@@ -15,4 +15,4 @@
 #
 
 
-Region = WorldDb::Models::Region
+Region = WorldDb::Model::Region

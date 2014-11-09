@@ -12,5 +12,5 @@
 #
 
 
-Tag = WorldDb::Models::Tag
+Tag = TagDb::Model::Tag
 

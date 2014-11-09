@@ -11,5 +11,5 @@
 #
 
 
-Tagging = WorldDb::Models::Tagging
+Tagging = TagDb::Model::Tagging
 

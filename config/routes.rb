@@ -7,8 +7,10 @@ Worlddbhost::Application.routes.draw do
 
   # todo: add  JSON API link to layout
 
-  get '/api' => redirect('/api/v1')
-  mount WorldDb::Service::Server, :at => '/api/v1'  # NB: make sure to require 'worlddb-service'
+  if defined?( WorldDb::Service )
+    get '/api' => redirect('/api/v1')
+    mount WorldDb::Service::Server, :at => '/api/v1'  # NB: make sure to require 'worlddb-service'
+  end
 
   ## mount sinatra app (bundled w/ logutils gem)
   mount LogDb::Server, :at => '/logs'    # NB: make sure to require 'logutils/server'
@@ -17,3 +19,4 @@ Worlddbhost::Application.routes.draw do
   mount WorldDbAdmin::Engine, :at => '/'  # mount a root possible?
 
 end
+

@@ -10,4 +10,4 @@
 #
 
 
-Prop = WorldDb::Models::Prop
+Prop = ConfDb::Model::Prop

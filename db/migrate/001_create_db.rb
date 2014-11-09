@@ -1,6 +1,8 @@
 class CreateDb < ActiveRecord::Migration
   def up
-    LogDb.create
+    LogDb.create    # logs  table
+    ConfDb.create   # props table
+    TagDb.create    # tags, taggings table
     WorldDb.create
   end
 

@@ -1,0 +1,4 @@
+
+
+Place = WorldDb::Model::Place
+

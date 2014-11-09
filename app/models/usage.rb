@@ -12,5 +12,5 @@
 #  updated_at :datetime        not null
 #
 
+Usage = WorldDb::Model::Usage
 
-Usage = WorldDb::Models::Usage

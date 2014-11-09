@@ -10,4 +10,5 @@
 #
 
 
-Lang = WorldDb::Models::Lang
+Lang = WorldDb::Model::Lang
+

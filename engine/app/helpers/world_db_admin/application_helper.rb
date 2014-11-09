@@ -6,9 +6,9 @@ module ApplicationHelper
 
   def powered_by
     content_tag :div do
-      link_to( 'Questions? Comments?', 'http://groups.google.com/group/opensport' ) + " | " +
-      link_to( "world.db/#{WorldDb::VERSION}", 'https://github.com/geraldb/world.db' )  + ', ' +
-      link_to( "world.db.admin/#{WorldDbAdmin::VERSION}", 'https://github.com/geraldb/world.db.admin' ) + ' - ' + 
+      link_to( 'Questions? Comments?', 'http://groups.google.com/group/openmundi' ) + " | " +
+      link_to( "world.db/#{WorldDb::VERSION}", 'https://github.com/worlddb/world.db.ruby' )  + ', ' +
+      link_to( "world.db.admin/#{WorldDbAdmin::VERSION}", 'https://github.com/worlddb/world.db.admin' ) + ' - ' + 
       content_tag( :span, "Ruby/#{RUBY_VERSION} (#{RUBY_RELEASE_DATE}/#{RUBY_PLATFORM}) on") + ' ' +
       content_tag( :span, "Rails/#{Rails.version} (#{Rails.env})" ) + " | " + 
       link_to( 'Icon Drawer Flags', 'http://www.icondrawer.com' )
