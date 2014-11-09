@@ -9,10 +9,10 @@ Hoe.spec 'worlddb-admin' do
   self.summary = 'worlddb admin addon - rails engine'
   self.description = summary
 
-  self.urls    = ['https://github.com/geraldb/world.db.admin']
+  self.urls    = ['https://github.com/worlddb/world.db.admin']
 
   self.author  = 'Gerald Bauer'
-  self.email   = 'opensport@googlegroups.com'
+  self.email   = 'openmundi@googlegroups.com'
 
   self.readme_file  = 'README.md'
   self.history_file = 'History.md'
