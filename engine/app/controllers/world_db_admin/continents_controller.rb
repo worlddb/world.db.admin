@@ -8,7 +8,7 @@ class ContinentsController < WorldDbAdminController
   def index
     @continents = Continent.all
 
-    @order      = params[:order] || 'title'
+    @order      = params[:order] || 'name'
   end
 
 end # class ContinentsController

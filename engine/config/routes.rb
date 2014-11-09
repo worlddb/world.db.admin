@@ -23,6 +23,7 @@ WorldDbAdmin::Engine.routes.draw do
   get 'territories', :to => 'countries#index_territories', :as => 'territories'
 
 
+  resources :places
   resources :continents
   resources :countries
   resources :regions

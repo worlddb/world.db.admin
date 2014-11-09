@@ -1,0 +1,38 @@
+
+
+<h1>Places A-Z</h1>
+
+<% ('A'..'Z').each_with_index do |letter,i| %>
+  <% if i > 0 then %>
+    •
+  <% end %>
+  <%= letter %>
+<% end %>
+
+<% ('A'..'Z').each do |letter| %>
+
+<h2><%= letter %></h2>
+
+<% Place.where( "name like '#{letter.downcase}%'").order(:name).each do |place| %>
+<div>
+ <%= place.name %>
+  <span style='font-size: 80%;'>
+    (<%= place.kind %>)
+    <% if place.kind == 'CITY'
+         city =  City.find_by_place_id( place.id )
+     %>
+       - <%= city.country.name %>
+        <% if city.region %>
+          › <%= city.region.name %>
+        <% end %>
+    <% end %>
+    <% if place.kind == 'ADM1'
+        region =  Region.find_by_place_id( place.id )
+     %>
+       - <%= region.country.name %>
+    <% end %>
+  </span>
+</div>
+<% end %>
+
+<% end %>
